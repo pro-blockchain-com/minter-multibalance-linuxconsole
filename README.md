@@ -1,6 +1,9 @@
 # minter-multibalance-linuxconsole
 Very quick view of balances for all your wallets in Linux console without SDK
 
+![Preview](https://github.com/pro-blockchain-com/minter-multibalance-linuxconsole/raw/master/preview.png)
+
+
 ### Installing
 
 ```bash
