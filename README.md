@@ -10,6 +10,8 @@ Very quick view of balances for all your wallets in Linux console without SDK
 apt install php-cli
 ```
 
+Modify conf.php and change $nodeUrl
+
 ### Starting
 ```bash
 ./minter-multibalance-linuxconsole.php
