@@ -7,7 +7,8 @@ error_reporting(0);
 include "conf.php";
 include "BigInteger.php";
 
-
+$a = "/wallets.txt";
+if(!file_exists($a))
 $a = "wallets.txt";
 $a = file_get_contents($a);
 $a = trim($a);
@@ -18,6 +19,10 @@ foreach($mas as $line)
     if($line[0]=="#")continue;
     $t = explode(":",$line);
     $wal = substr($t[0],0,42);
+    $l = strlen($wname);
+    if($l>$max_len)
+    $max_len = $l;
+
     $wname = $t[1];
     if(!$wname)$wname = $wal;
     $wals[$wname][wal] = $wal;
@@ -114,7 +119,7 @@ foreach($out as $wal=>$v)
 {
     $wname = $wals2[$wal];
     $l = strlen($wname);
-    for($i=0;$i<(42-$l);$i++)
+    for($i=0;$i<($max_len-$l+2);$i++)
     $wname .= " ";
     print "\033[38;93m  $wname \t\033[01;32m[$wal] \033[00m \t$def_coin\t";
     $amount = round($v,4);
