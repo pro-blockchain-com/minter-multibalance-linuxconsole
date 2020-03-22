@@ -18,7 +18,7 @@ apt install php-cli
 ### Starting
 Edit wallet in wallets.txt
 
-<address>:<name>
+&lt;address&gt:&lt;name&gt;
 
 ### Support And Donating
 
