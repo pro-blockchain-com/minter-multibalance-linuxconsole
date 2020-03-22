@@ -116,7 +116,7 @@ foreach($out as $wal=>$v)
     $l = strlen($wname);
     for($i=0;$i<(42-$l);$i++)
     $wname .= " ";
-    print "\033[01;32m $wname \t[$wal] \033[00m \t$def_coin\t";
+    print "\033[38;93m  $wname \t\033[01;32m[$wal] \033[00m \t$def_coin\t";
     $amount = round($v,4);
     print "\033[01;35m $amount \033[00m";
     print "\n";
