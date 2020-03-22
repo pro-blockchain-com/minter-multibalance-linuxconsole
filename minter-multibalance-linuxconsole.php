@@ -121,7 +121,7 @@ foreach($out as $wal=>$v)
     print "\033[01;35m $amount \033[00m";
     print "\n";
 }
-print "ALL: ".$coins2[all]."\n";
+print "AMOUNT: ".$coins2[all]." BIP\n";
 foreach($coins2[coin] as $coin=>$v)
 {
     $c = $coin;
