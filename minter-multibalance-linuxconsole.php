@@ -23,7 +23,6 @@ foreach($mas as $line)
     $wals[$wname][wal] = $wal;
 }
 
-//$devider = 1000000000000000000;
 
 $kuda = $nodeUrl."/status";
 $a = file_get_contents($kuda);
@@ -44,16 +43,12 @@ $t = date("Y-m-d H:i:s",$t);
 print "-- block $blk -- ". date("Y-m-d H:i:s")." -- delta: $delta sec ------ $blk [$t] ---\n";
 
 
-//print_r($wals);
-//die;
-
 foreach($wals as $wname=>$wal2)
 {
 //    print_r($wal2);
 	$wals2[$wal2[wal]] = $wname;
 	$wals3[] = $wal2[wal];  
 }
-//die;
     $t = json_encode($wals3);
     $url = $nodeUrl."/addresses?addresses=$t";
     if($debug)print $url."\n";
@@ -62,14 +57,12 @@ foreach($wals as $wname=>$wal2)
     $const += JSON_BIGINT_AS_STRING;
     $a = json_decode($a,1,512,$const);
 	if($debug)print_r($a);
-//print_r($wals3);
 	foreach($a[result] as $v2)
 	{
 	    $wal = $v2[address];
 	    if($debug)print_r($v2);
 	    foreach($v2[balance] as $coin=>$amount)
 	    {
-//	    if(!isset($coins[$coin]))$coins[$coin] = new Math_BigInteger(0);
 	    unset($bb,$bb2);
 	    $v = $coins[$coin];
 	    if(!$v)$v = 0;
@@ -81,8 +74,6 @@ foreach($wals as $wname=>$wal2)
 	    $v = $c->toString();
 	    $coins[$coin] = $v;
 
-		//$coins[$coin] += $amount;
-//		$coins[$coin] = $coins[$coin]->add($amount);
 		if($coin != "BIP")
 		{
 		$kuda = $nodeUrl."/estimate_coin_sell?coin_to_sell=$coin&coin_to_buy=BIP&value_to_sell=$amount";
@@ -100,12 +91,6 @@ foreach($wals as $wname=>$wal2)
 	}
 
 ksort($coins);
-//$c = 0;
-//$c += JSON_PRETTY_PRINT;
-//$c += JSON_UNESCAPED_SLASHES;
-
-//$b = json_encode($coins,$c);
-//print $b;
 if($debug)print_r($coins);
 foreach($coins as $coin=>$amount)
 {
@@ -125,9 +110,6 @@ foreach($coins as $coin=>$amount)
     }
 
 }
-//print_r($coins2);
-//print_r($out);
-//print_r($wals2);
 foreach($out as $wal=>$v)
 {
     $wname = $wals2[$wal];
@@ -136,14 +118,7 @@ foreach($out as $wal=>$v)
     $wname .= " ";
     print "\033[01;32m $wname \t[$wal] \033[00m \t$def_coin\t";
     $amount = round($v,4);
-/*
-    print $wname."\t";
-    print $wal."\t";
-
-    print $def_coin."\t";
-    print $v2."\t";
-*/
-print "\033[01;35m $amount \033[00m";
+    print "\033[01;35m $amount \033[00m";
     print "\n";
 }
 print "ALL: ".$coins2[all]."\n";
@@ -158,6 +133,5 @@ foreach($coins2[coin] as $coin=>$v)
     print "\n";
 
 }
-die;
 
 ?>
